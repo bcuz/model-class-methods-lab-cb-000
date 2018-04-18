@@ -29,7 +29,7 @@ class Boat < ActiveRecord::Base
 
   def self.sailboats
     # idk
-
+    
     # make it in classification then chain onto that here?
 
   end
