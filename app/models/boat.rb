@@ -6,7 +6,10 @@ class Boat < ActiveRecord::Base
   def self.first_five
     # find(:all, :order => "id asc", :limit => 5)
     # self.find(:all, :limit => 5)
-
     order(id: :asc).limit(5)
+  end
+
+  def self.dinghy
+     where("length <?", 20)
   end
 end
