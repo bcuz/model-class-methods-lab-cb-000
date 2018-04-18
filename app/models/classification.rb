@@ -6,4 +6,6 @@ class Classification < ActiveRecord::Base
     select(:name).distinct
   end
 
+  
+
 end
