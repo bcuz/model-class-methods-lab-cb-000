@@ -4,7 +4,6 @@ class Classification < ActiveRecord::Base
 
   def self.my_all
     select(:name).distinct
-
   end
 
 end
