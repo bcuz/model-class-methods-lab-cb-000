@@ -29,9 +29,9 @@ class Boat < ActiveRecord::Base
 
   def self.sailboats
     # idk
-    Classification.select{|d| d.boat.classifications.include?("Sailboat")}
+    # Classification.select{|d| d.boat.classifications.include?("Sailboat")}
 
-    Classification.joins(:boats).where(:boats => { :roles => ['developer'] })
+    Classification.joins(:boats).where(:boats => { :name => ['Sailboat'] })
 
     # make it in classification then chain onto that here?
 
