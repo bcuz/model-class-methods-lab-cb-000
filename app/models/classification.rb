@@ -7,7 +7,7 @@ class Classification < ActiveRecord::Base
   end
 
   def self.sailboats
-    where(name: nil)
+    where(name: 'Sailboat')
 
   end
 
