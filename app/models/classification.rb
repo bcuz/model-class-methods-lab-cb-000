@@ -6,6 +6,8 @@ class Classification < ActiveRecord::Base
     select(:name).distinct
   end
 
-  
+  def self.sailboats
+
+  end
 
 end
