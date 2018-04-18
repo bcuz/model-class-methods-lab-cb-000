@@ -31,6 +31,8 @@ class Boat < ActiveRecord::Base
     # idk
     Classification.select{|d| d.boat.classifications.include?("Sailboat")}
 
+    Classification.joins(:boats).where(:boats => { :roles => ['developer'] })
+
     # make it in classification then chain onto that here?
 
   end
