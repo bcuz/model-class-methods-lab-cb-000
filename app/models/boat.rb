@@ -29,7 +29,7 @@ class Boat < ActiveRecord::Base
 
   def self.sailboats
     # idk
-    Classification.select{|d| d.user.roles.include?("developer")}
+    Classification.select{|d| d.boat.classifications.include?("Sailboat")}
 
     # make it in classification then chain onto that here?
 
