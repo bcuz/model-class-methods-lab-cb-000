@@ -12,4 +12,15 @@ class Boat < ActiveRecord::Base
   def self.dinghy
      where("length <?", 20)
   end
+  def self.ship
+     where("length >=?", 20)
+  end
+
+  def self.last_three_alphabetically
+    # order(name: :asc).limit(3)
+    # think thats good
+    # opposite direction
+    order(name: :desc).limit(3)
+
+  end
 end
