@@ -20,7 +20,7 @@ class Classification < ActiveRecord::Base
       # Classification.joins(:boats).order("LENGTH(boats.name) desc").first
 
       # prolly crap code bruh
-      Boat.joins(:classifications).order(length: :desc).first.classifications
+      Boat.order(length: :desc).first.classifications
   end
 
 end
