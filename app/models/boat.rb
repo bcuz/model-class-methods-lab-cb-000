@@ -44,7 +44,7 @@ class Boat < ActiveRecord::Base
 
     # Project.joins(:vacancies).group("projects.id").having("count(vacancies.id)>0")
     # https://stackoverflow.com/questions/20183710/find-all-records-which-have-a-count-of-an-association-greater-than-zero
-    # got it, but only by the power of googling.
+    # got it, but only by the power of googling. pluralizing a thing
     Boat.joins(:classifications).group("boats.id").having("count(classifications.id) = 3")
 
   end

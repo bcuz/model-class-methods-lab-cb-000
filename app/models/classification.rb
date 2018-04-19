@@ -11,4 +11,16 @@ class Classification < ActiveRecord::Base
 
   end
 
+  def self.longest
+      # Classification.joins(:boats)
+
+      # Classification.joins(:boats).order("boats.name desc"
+
+      # longest boat, not longest name
+      # Classification.joins(:boats).order("LENGTH(boats.name) desc").first
+
+      # prolly crap code bruh
+      Boat.joins(:classifications).order(length: :desc).first.classifications
+  end
+
 end
