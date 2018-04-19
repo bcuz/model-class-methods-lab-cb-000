@@ -27,12 +27,75 @@ class Captain < ActiveRecord::Base
     # iterate over activerecord relation
     boats = Boat.joins(:classifications, :captain).group("captains.id").where("classifications.name = 'Catamaran'")
 
-    # ans = boats.collect do |boat|
-    #   Boat.find_by(name: boat)
-    # end
-    #
+    ans = boats.collect do |boat|
+      Captain.find_by(id: boat.captain_id)
+    end
+
+    # binding.pry
+    # issue is its not being returned as a relation.
     # ans
 
+    # cri
+    Captain.where(id: ans.map(&:id))
 
   end
+
+  def self.sailors
+
+    # iterate over activerecord relation
+    # boats = Boat.joins(:classifications, :captain).group("captains.id").where("classifications.name = 'Sailboat'")
+    boats = Boat.joins(:classifications, :captain).group("captains.id").where(:classifications => { :name => ['Sailboat'] })
+
+    ans = boats.collect do |boat|
+      Captain.find_by(id: boat.captain_id)
+    end
+
+    # binding.pry
+    # issue is its not being returned as a relation.
+    # ans
+
+    # cri
+    Captain.where(id: ans.map(&:id))
+
+  end
+
+  def self.talented_seafarers
+
+    # iterate over activerecord relation
+    # almost there.
+    # boats = Boat.joins(:classifications, :captain).group("captains.id").where("classifications.name = ? and classifications.name = ?", "Sailboat", "Motorboat")
+    boats = Boat.joins(:classifications, :captain).group("captains.id").where(:classifications => { :name => ['Sailboat', 'Motorboat'] })
+
+    ans = boats.collect do |boat|
+      Captain.find_by(id: boat.captain_id)
+    end
+
+    # binding.pry
+    # issue is its not being returned as a relation.
+    # ans
+
+    # cri
+    Captain.where(id: ans.map(&:id))
+
+  end
+
+  def self.non_sailors
+
+    # iterate over activerecord relation
+    boats = Boat.joins(:classifications, :captain).group("captains.id").where("classifications.name != 'Sailboat'")
+
+    ans = boats.collect do |boat|
+      Captain.find_by(id: boat.captain_id)
+    end
+
+    # binding.pry
+    # issue is its not being returned as a relation.
+    # ans
+
+    # cri
+    Captain.where(id: ans.map(&:id))
+
+  end
+
+
 end
