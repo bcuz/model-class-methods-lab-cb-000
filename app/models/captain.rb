@@ -80,9 +80,9 @@ class Captain < ActiveRecord::Base
   end
 
   def self.non_sailors
-
     # iterate over activerecord relation
-    boats = Boat.joins(:classifications, :captain).group("captains.id").where("classifications.name != 'Sailboat'")
+    boats = Boat.joins(:classifications, :captain).group("captains.id").where.not("classifications.name = 'Sailboat'")
+    # binding.pry
 
     ans = boats.collect do |boat|
       Captain.find_by(id: boat.captain_id)
@@ -96,6 +96,4 @@ class Captain < ActiveRecord::Base
     Captain.where(id: ans.map(&:id))
 
   end
-
-
 end
